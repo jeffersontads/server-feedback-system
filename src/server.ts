@@ -4,7 +4,12 @@ import cors from "cors";
 
 const app = express();
 
-app.listen(3333, () => {
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+// app.listen(3001);
+
+app.listen(process.env.PORT || 3333, () => {
   console.log("HTTP server running!");
 });
 /**
@@ -23,7 +28,3 @@ app.listen(3333, () => {
  */
 
 //falar que ele tem q usar json (middleware) que verifica se a transição esta em JSON pois por padrao express nao trabalha com json
-app.use(cors());
-app.use(express.json());
-app.use(routes);
-app.listen(3001);
